@@ -3,6 +3,8 @@ import { Outlet } from "react-router-dom";
 import React, { useState } from 'react';
 import { GlobalProvider } from './context/GlobalState';
 import Navbar from './Navbar';
+import 'bootstrap/dist/css/bootstrap.css';
+import Criteria from './components/Criteria';
 
 
 function App() {

@@ -28,34 +28,38 @@ const Login = () => {
   }
 
   return (
-    <div className="c-form">
-      <form onSubmit={handleLogin}>
-        <div>
-          <label htmlFor="username">Username:</label>
-          <input
-            type="text"
-            id="username"
-            name="username"
-            onChange={(e) => setUsername(e.target.value)}
-            required
-          />
+    <div className="container mt-5 shadow-lg rounded" style={{height: '500px'}}>
+      <div className="container-fluid">
+        <div className="c-form">
+          <form className='' onSubmit={handleLogin}>
+            <div>
+              <label htmlFor="username">Username:</label>
+              <input
+                type="text"
+                id="username"
+                name="username"
+                onChange={(e) => setUsername(e.target.value)}
+                required
+                />
+            </div>
+            <div>
+              <label htmlFor="pass">Password</label>
+              <input
+                type="password"
+                id="pass"
+                name="password"
+                minLength="8"
+                required
+                onChange={(e) => setPassword(e.target.value)}
+                />
+            </div>
+            <input
+              type="submit"
+              value="Sign in"
+              />
+          </form>
         </div>
-        <div>
-          <label htmlFor="pass">Password</label>
-          <input
-            type="password"
-            id="pass"
-            name="password"
-            minLength="8"
-            required
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
-        <input
-          type="submit"
-          value="Sign in"
-        />
-      </form>
+      </div>
     </div>
   )
 

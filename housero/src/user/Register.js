@@ -21,6 +21,7 @@ export default function Register() {
     const handleRegister = (e) => {
         e.preventDefault();
         AuthService.register(user)
+        .then()
     }
 
     return (
