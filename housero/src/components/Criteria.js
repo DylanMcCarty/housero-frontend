@@ -4,6 +4,15 @@ import { useGlobalState } from "../context/GlobalState";
 import { useEffect, useState } from 'react';
 import request from '../services/api.request';
 
+
+let startCriteria = {
+  baths: "0",
+  beds: "0",
+  max_price: null,
+  min_price: "0",
+  sqft: "0",
+}
+
 export default function Criteria() {
 
     const [ state, dispatch ] = useGlobalState();
@@ -32,17 +41,17 @@ useEffect(() => {
     }
 
     getCriteria()
-//     axios.get(`https://8000-dylanmccart-houseroback-jwpcvpftuv2.ws-us77.gitpod.io/api/criteria/`)
-//         .then((response) => {
+// //     axios.get(`https://8000-dylanmccart-houseroback-jwpcvpftuv2.ws-us77.gitpod.io/api/criteria/`)
+// //         .then((response) => {
             
-//             console.log(response.data)
-//             setData(response.data);
+// //             console.log(response.data)
+// //             setData(response.data);
 
-//         }, (error) => {
+// //         }, (error) => {
 
-//         console.log(error);
+// //         console.log(error);
 
-//         });
+// //         });
 }, [])
 
 
@@ -57,7 +66,7 @@ const handleChange = (key, value) => {
 async function update(e) {
   e.preventDefault()
   let options = {
-    url : `/criteria/4/`,
+    url : `/criteria/?user__id=${state.currentUser.user_id}`,
     method : 'PATCH',
     data,
   }
@@ -69,37 +78,38 @@ async function update(e) {
   if (!data) return null
 
 
+
   return (
     <div>
       <form onSubmit={update} >
       
         <label>Baths</label>
         <input 
-        value={data.baths}
+        placeholder={data.baths}
         onChange={(e) => handleChange('baths', e.target.value)}
         ></input>
 
         <label>Beds</label>
         <input
-        value={data.beds}
+        placeholder={data.beds}
         onChange={(e) => handleChange('beds', e.target.value)}
         ></input>
 
         <label>max_price</label>
         <input 
-        value={data.max_price}
+        placeholder={data.max_price}
         onChange={(e) => handleChange('max_price', e.target.value)}
         ></input>
 
         <label>min_price</label>
         <input 
-        value={data.min_price}
+        placeholder={data.min_price}
         onChange={(e) => handleChange('min_price', e.target.value)}
         ></input>
 
         <label>sqft</label>
         <input 
-        value={data.sqft}
+        placeholder={data.sqft}
         onChange={(e) => handleChange('sqft', e.target.value)}
         ></input>
 
