@@ -2,6 +2,7 @@ import React from 'react'
 import { useGlobalState } from "../context/GlobalState";
 import { useEffect, useState } from 'react';
 import request from '../services/api.request';
+import Homes from './Homes';
 
 
 export default function Criteria() {
@@ -32,7 +33,7 @@ useEffect(() => {
     let resp = await request(options)
     setData(resp.data[0])
     setRowID(resp.data[0].id)
-    console.log(resp.data)
+    console.log(resp)
   }
   getCriteria()
 }, [])
@@ -64,6 +65,7 @@ async function update(e) {
 
 
   return (
+<>
     <div>
       <form onSubmit={update} >
       
@@ -100,12 +102,16 @@ async function update(e) {
         <select 
         onChange={(e) => handleChange('max_price', e.target.value)}
         >
-          <option value={null}>Any</option>
+          <option value={99999999999999}>Any</option>
           <option value={100000}>100,000+</option>
           <option value={200000}>200,000+</option>
           <option value={300000}>300,000+</option>
           <option value={400000}>400,000+</option>
           <option value={500000}>500,000+</option>
+          <option value={600000}>600,000</option>
+          <option value={700000}>700,000</option>
+          <option value={800000}>800,000</option>
+          <option value={900000}>900,000</option>
         </select>
 
         <label>min_price</label>
@@ -117,7 +123,7 @@ async function update(e) {
         <select 
         onChange={(e) => handleChange('min_price', e.target.value)}
         >
-          <option value={null}>Any</option>
+          <option value={0}>Any</option>
           <option value={100000}>100,000</option>
           <option value={200000}>200,000</option>
           <option value={300000}>300,000</option>
@@ -131,9 +137,17 @@ async function update(e) {
         onChange={(e) => handleChange('sqft', e.target.value)}
         ></input>
 
-        <input type='submit'></input> 
+        
+        <input value={'save to profile'} type='submit'></input> 
 
       </form>
+
     </div>
+    <div className='container'>
+      <div className='row'>
+        <Homes data={data} />
+      </div>
+    </div>
+    </>
   )
 }

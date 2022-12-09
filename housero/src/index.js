@@ -10,6 +10,8 @@ import {
 import Login from './user/Login';
 import Register from './user/Register';
 import Profile from './user/Profile';
+import Home from './components/Home';
+import Listing from './components/Listing';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -18,9 +20,11 @@ root.render(
     <Router>
       <Routes>
         <Route path="/" element={<App />}>
+          <Route path="home" element={<Home />} />
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
           <Route path="profile" element={<Profile />} />
+          <Route path="listing" element={<Listing />} />
         </Route>
       </Routes>
     </Router>

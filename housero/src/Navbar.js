@@ -17,25 +17,25 @@ export default function Navbar() {
       <div className="container-fluid">
         <ul className="navbar-nav">
           <li className="nav-item me-2 active rounded shadow-lg">
-            <Link to="/">
+            <Link to="/home">
               <img src={Logo} />
             </Link>
           </li>
         </ul>
         <ul className="navbar-nav">
           {!state.currentUser && (
-            <li className="nav-item d-flex align-items-center px-3 me-2">
-              <Link to="/login">Log in</Link>
+            <li className="btn btn-primary d-flex align-items-center px-3 me-2">
+              <Link className="text-white" to="/login">Log in</Link>
             </li>
           )}
           {!state.currentUser && (
-            <li className="nav-item d-flex align-items-center px-3 me-2">
-              <Link to="/register">Register</Link>
+            <li className="btn btn-primary d-flex align-items-center px-3 me-2">
+              <Link className="text-white" to="/register">Register</Link>
             </li>
           )}
           {state.currentUser && (
-            <li className="nav-item d-flex align-items-center px-3 me-2">
-              <Link to="/profile">Profile</Link>
+            <li className="btn btn-primary d-flex align-items-center px-3 me-2">
+              <Link className="text-white" to="/profile">Profile</Link>
             </li>
           )}
           {state.currentUser && (
