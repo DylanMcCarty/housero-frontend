@@ -9,9 +9,8 @@ import {
 } from "react-router-dom";
 import Login from './user/Login';
 import Register from './user/Register';
-import Profile from './user/Profile';
+import PropertySearch from './user/PropertySearch';
 import Home from './components/Home';
-import Listing from './components/Listing';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -23,8 +22,7 @@ root.render(
           <Route path="home" element={<Home />} />
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
-          <Route path="profile" element={<Profile />} />
-          <Route path="listing" element={<Listing />} />
+          <Route path="propertysearch" element={<PropertySearch />} />
         </Route>
       </Routes>
     </Router>

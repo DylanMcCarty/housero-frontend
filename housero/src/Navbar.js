@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { useGlobalState } from "./context/GlobalState";
 import AuthService from "./services/auth.service";
 import Logo from "./Assets/Logo.png";
@@ -8,8 +8,7 @@ export default function Navbar() {
   const [state, dispatch] = useGlobalState();
 
   function Logout() {
-    AuthService.logout();
-    window.location.reload();
+    AuthService.logout().then(Navigate('/home'))
   }
 
   return (
@@ -25,22 +24,22 @@ export default function Navbar() {
         <ul className="navbar-nav">
           {!state.currentUser && (
             <li className="btn btn-primary d-flex align-items-center px-3 me-2">
-              <Link className="text-white" to="/login">Log in</Link>
+              <Link className="text-decoration-none text-white" to="/login">Log in</Link>
             </li>
           )}
           {!state.currentUser && (
             <li className="btn btn-primary d-flex align-items-center px-3 me-2">
-              <Link className="text-white" to="/register">Register</Link>
+              <Link className="text-decoration-none text-white" to="/register">Register</Link>
             </li>
           )}
           {state.currentUser && (
-            <li className="btn btn-primary d-flex align-items-center px-3 me-2">
-              <Link className="text-white" to="/profile">Profile</Link>
+            <li className="btn bg-primary d-flex align-items-center px-3 me-2">
+              <Link className="text-white text-decoration-none" to="/propertysearch">Property Search</Link>
             </li>
           )}
           {state.currentUser && (
             <li className="nav-item d-flex align-items-center px-3 me-2">
-              <Link
+              <Link to='/home' className="text-decoration-none "
                 onClick={() => {
                   Logout();
                 }}

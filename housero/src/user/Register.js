@@ -1,7 +1,10 @@
 import React, { useState } from "react";
+import { Navigate } from "react-router-dom";
 import AuthService from "../services/auth.service";
 
 export default function Register() {
+
+  const [resp, setResp] = useState([])
   const [user, setUser] = useState({
     username: "",
     password: "",
@@ -20,8 +23,10 @@ export default function Register() {
 
   const handleRegister = (e) => {
     e.preventDefault();
-    AuthService.register(user).then();
-  };
+    AuthService.register(user).then((resp) => {
+      console.log(resp)
+    })
+  }
 
   
 
@@ -119,6 +124,8 @@ export default function Register() {
             }
           />
         </form>
+            
+
       </div>
     </div>
   );

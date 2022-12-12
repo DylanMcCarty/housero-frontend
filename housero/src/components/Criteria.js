@@ -66,24 +66,27 @@ async function update(e) {
 
   return (
 <>
-    <div>
-      <form onSubmit={update} >
-      
-        <label>Beds</label>
+    <div className='container p-3'>
+      <form onSubmit={update} className="row p-4 text-center justify-content-between bg-primary rounded shadow fs-5 text-white fw-bold align-items-center" >
+      <div className="col-2">
+        <label>Beds:</label><br/>
         <select
+        className='form-control form-control-lg shadow'
         value={data.beds}
         onChange={(e) => handleChange('beds', e.target.value)}
         >
-          <option value={1}>1+</option>
-          <option value={2}>2+</option>
-          <option value={3}>3+</option>
-          <option value={4}>4+</option>
-          <option value={5}>5+</option>
-          <option value={6}>6+</option>
+              <option value={1}>1+</option>
+              <option value={2}>2+</option>
+              <option value={3}>3+</option>
+              <option value={4}>4+</option>
+              <option value={5}>5+</option>
+              <option value={6}>6+</option>
         </select>
-
-        <label>Baths</label>
+        </div>
+        <div className="col-2">
+        <label>Baths:</label><br/>
         <select
+        className='form-control form-control-lg shadow'
         value={data.baths}
         onChange={(e) => handleChange('baths', e.target.value)}
         >
@@ -92,58 +95,58 @@ async function update(e) {
           <option value={3}>3+</option>
           <option value={4}>4+</option>
         </select>
-
-        <label>max_price</label>
+        </div>
+        <div className="col-2">
+        <label>Max Price</label>
         <input
+        maxlength="15"
+        min="0" 
+        max="999999999999999"
+        className='form-control form-control-lg shadow'
         type={'number'}
         placeholder={data.max_price}
+        list='prices'
         onChange={(e) => handleChange('max_price', e.target.value)}>   
         </input>
-        <select 
-        onChange={(e) => handleChange('max_price', e.target.value)}
-        >
-          <option value={99999999999999}>Any</option>
-          <option value={100000}>100,000+</option>
-          <option value={200000}>200,000+</option>
-          <option value={300000}>300,000+</option>
-          <option value={400000}>400,000+</option>
-          <option value={500000}>500,000+</option>
-          <option value={600000}>600,000</option>
-          <option value={700000}>700,000</option>
-          <option value={800000}>800,000</option>
-          <option value={900000}>900,000</option>
-        </select>
-
-        <label>min_price</label>
+        </div>
+        <div className="col-2">
+        <label>Min Price</label>
         <input
+        maxlength="15"
+        min="0" 
+        max="999999999999999"
+        className='form-control form-control-lg shadow'
         type={'number'}
         placeholder={data.min_price}
         onChange={(e) => handleChange('min_price', e.target.value)}>   
         </input>
-        <select 
-        onChange={(e) => handleChange('min_price', e.target.value)}
-        >
-          <option value={0}>Any</option>
-          <option value={100000}>100,000</option>
-          <option value={200000}>200,000</option>
-          <option value={300000}>300,000</option>
-          <option value={400000}>400,000</option>
-          <option value={500000}>500,000</option>
-        </select>
-
-        <label>sqft</label>
+        </div>
+        <div className="col-2">
+        <label>Square Feet</label>
         <input 
+        maxlength="15"
+        min="0" 
+        max="99999"
+        type={'number'}
+        className='form-control form-control-lg shadow'
         placeholder={data.sqft}
         onChange={(e) => handleChange('sqft', e.target.value)}
         ></input>
 
+
+
         
-        <input value={'save to profile'} type='submit'></input> 
+        </div>
+
+        <div className='p-3'>
+          <input className='btn btn-secondary' value={'save to profile'} type='submit'></input>
+        </div>
 
       </form>
-
     </div>
-    <div className='container'>
+
+    
+    <div className='container-fluid'>
       <div className='row'>
         <Homes data={data} />
       </div>
