@@ -40,8 +40,9 @@
   
 
 #like-btn {
+    background-color: red;
     position: absolute;
     left: 28px;
     top: 36px;
-    background-image: url('../Assets/openheart.png');
 }
+

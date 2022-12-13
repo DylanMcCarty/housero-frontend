@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import { Navigate } from "react-router-dom";
 import AuthService from "../services/auth.service";
+import { toast, Toaster } from "react-hot-toast";
 
 export default function Register() {
+
+  const sucessNotify = () => toast.success("Account Succesfully Created!");
+  const errorNotify = () => toast.error("Username Already Exists");
 
   const [resp, setResp] = useState([])
   const [user, setUser] = useState({
@@ -21,11 +25,10 @@ export default function Register() {
     });
   };
 
+
   const handleRegister = (e) => {
     e.preventDefault();
-    AuthService.register(user).then((resp) => {
-      console.log(resp)
-    })
+    AuthService.register(user).then(Navigate("/login"))
   }
 
   
